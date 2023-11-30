@@ -1,5 +1,5 @@
 // process
 
 new Worker(
-  new URL('./webworker.js', import.meta.url)
+  /* webpackChunkName: "workers/v2-worker" */ new URL('./v2.js', import.meta.url)
 )

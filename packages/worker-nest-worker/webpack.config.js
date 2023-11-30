@@ -3,10 +3,12 @@ const path = require('path');
 
 module.exports = {
   entry: './src/index.js',
+  target: "webworker",
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     wasmLoading: 'fetch',
+    publicPath: 'auto',
   },
   mode: "development",
   module: {

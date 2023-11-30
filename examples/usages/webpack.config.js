@@ -1,22 +1,21 @@
 const webpack = require('webpack');
 const path = require('path');
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: './src/index.js',
   output: {
-    publicPath: 'dist',
+    publicPath: 'auto',
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
   mode: "development",
   module: {
-    rules: [
-      // {
-      //   test: /\.ts?$/,
-      //   use: 'ts-loader',
-      //   exclude: /node_modules/,
-      // },
-    ]
+    // rules: [
+    //   {
+
+    //   }
+    // ]
   },
   // experiments: { 
   //   asyncWebAssembly: true,
@@ -35,6 +34,15 @@ module.exports = {
   //   }
   // },
   plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          from: '*',
+          to: 'workers',
+          context: 'node_modules/worker-nest-worker/dist/workers/'
+        }
+      ]
+    })
     // new webpack.ProvidePlugin({
     //   Buffer: ['buffer', 'Buffer'],
     //   // process: "process/browser",
