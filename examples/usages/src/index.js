@@ -1,0 +1,2 @@
+import 'worker-nest-worker'
+
